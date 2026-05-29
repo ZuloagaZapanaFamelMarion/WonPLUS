@@ -1,0 +1,60 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --purple-primary: #7b5ea7;
+  --purple-dark: #5c4580;
+  --purple-light: #a88fd4;
+  --purple-soft: #f3eef9;
+  --purple-muted: #6b5b8a;
+  --white: #ffffff;
+  --gray-50: #fafafa;
+  --gray-100: #f0f0f0;
+  --gray-200: #e0e0e0;
+  --gray-600: #555555;
+  --gray-800: #222222;
+  --shadow-sm: 0 2px 8px rgba(91, 69, 128, 0.12);
+  --shadow-md: 0 8px 24px rgba(91, 69, 128, 0.18);
+  --radius: 12px;
+  --transition: 0.3s ease;
+  --font-main: 'Nunito', 'Segoe UI', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  color: var(--gray-800);
+  background-color: var(--white);
+  line-height: 1.6;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: var(--purple-primary);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+a:hover {
+  color: var(--purple-dark);
+}
+
+button,
+input,
+textarea,
+select {
+  font-family: inherit;
+}
