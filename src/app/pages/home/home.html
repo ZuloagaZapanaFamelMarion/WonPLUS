@@ -1,0 +1,209 @@
+<!-- Header principal / Hero -->
+<section class="hero" id="hogar">
+  <div class="hero-content animate-fade-in">
+    <h1>EMPRENDE.</h1>
+    <p class="hero-subtitle">Te brindamos acompañamiento para emprender SEGURO.</p>
+    <br />
+    <a href="#cursos" class="btn btn-primary btn-lg">Ver opciones</a>
+  </div>
+</section>
+
+<!-- Cuerpo principal -->
+<main class="site-main" id="contenido">
+  <div class="main-grid">
+
+    <!-- Columna principal -->
+    <div class="main-column">
+
+      <!-- Sección de cursos -->
+      <section class="section" id="cursos">
+          <h2 class="section-title">Opciones de acompañamiento</h2>
+        <div class="courses-grid">
+          @for (course of courses; track course.title) {
+            <article class="course-card animate-slide-up" [routerLink]="course.route">
+              <img [src]="course.image" [alt]="course.alt" class="course-img" loading="lazy" />
+              <h3>{{ course.title }}</h3>
+            </article>
+          }
+        </div>
+      </section>
+
+      <!-- Tabla de cursos  -->
+      <section class="section" id="tabla-cursos">
+          <h2 class="section-title">Plan de acompañamiento</h2>
+        <div class="table-wrapper">
+          <table class="courses-table">
+            <caption>Catálogo de opciones de acompañamiento</caption>
+            <thead>
+              <tr>
+                <th scope="col">Opción</th>
+                <th scope="col">Duración</th>
+                <th scope="col">Nivel</th>
+                <th scope="col">Modalidad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="curso-row" routerLink="/cursos/fundamentos-emprendimiento">
+                <td>Fundamentos del emprendimiento</td>
+                <td>6 semanas</td>
+                <td>Básico</td>
+                <td>Online</td>
+              </tr>
+              <tr class="curso-row" routerLink="/cursos/marketing-digital">
+                <td>Marketing digital para startups</td>
+                <td>8 semanas</td>
+                <td>Intermedio</td>
+                <td>Online</td>
+              </tr>
+              <tr class="curso-row" routerLink="/cursos/liderazgo-equipos">
+                <td>Liderazgo y gestión de equipos</td>
+                <td>5 semanas</td>
+                <td>Avanzado</td>
+                <td>Híbrido</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- Testimonios -->
+      <section class="section" id="testimonios">
+        <h2 class="section-title">Testimonios</h2>
+        <div class="testimonials-grid">
+          @for (item of testimonials; track item.name) {
+            <article
+              class="testimonial-card animate-slide-up"
+              [class.expanded]="expandedTestimonial === item.name"
+              (click)="toggleTestimonial(item.name)"
+            >
+              <img [src]="item.avatar" [alt]="'Avatar de ' + item.name" class="testimonial-avatar" loading="lazy" />
+              <div class="testimonial-body">
+                <p>{{ item.text }}</p>
+                <strong>{{ item.name }}</strong>
+              </div>
+            </article>
+          }
+        </div>
+      </section>
+
+      <!-- Multimedia (criterio rúbrica) -->
+      <section class="section multimedia-section" id="multimedia">
+        <h2 class="section-title">Conoce WonPLUS</h2>
+        <div class="multimedia-grid">
+          <figure class="media-block">
+            <video class="promo-video" controls poster="/images/course-1.svg">
+              <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+              Tu navegador no soporta el elemento de video.
+            </video>
+            <figcaption>Video promocional de la plataforma WonPLUS</figcaption>
+          </figure>
+          <figure class="media-block">
+            <audio class="promo-audio" controls>
+              <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg" />
+              Tu navegador no soporta el elemento de audio.
+            </audio>
+            <figcaption>Podcast: Historias de emprendedores WonPLUS</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Formulario de contacto (criterio rúbrica) -->
+      <section class="section contact-section" id="contacto">
+        <h2 class="section-title">Formulario de Contacto</h2>
+
+        @if (!contactSubmitted) {
+          <form class="contact-form" (submit)="onContactSubmit($event)">
+            <div class="form-row">
+              <label for="nombre">Nombre completo</label>
+              <input type="text" id="nombre" name="nombre" [(ngModel)]="contactForm.nombre" required placeholder="Tu nombre" [class.input-error]="contactErrors.nombre" />
+              @if (contactErrors.nombre) {
+                <span class="field-error">{{ contactErrors.nombre }}</span>
+              }
+            </div>
+            <div class="form-row">
+              <label for="email">Correo electrónico</label>
+              <input type="email" id="email" name="email" [(ngModel)]="contactForm.email" required placeholder="tu@email.com" [class.input-error]="contactErrors.email" />
+              @if (contactErrors.email) {
+                <span class="field-error">{{ contactErrors.email }}</span>
+              }
+            </div>
+            <div class="form-row">
+              <label for="mensaje">Mensaje</label>
+              <textarea id="mensaje" name="mensaje" [(ngModel)]="contactForm.mensaje" rows="4" required placeholder="Escribe tu consulta..." [class.input-error]="contactErrors.mensaje"></textarea>
+              @if (contactErrors.mensaje) {
+                <span class="field-error">{{ contactErrors.mensaje }}</span>
+              }
+            </div>
+            <button type="submit" class="btn btn-primary" [disabled]="!isContactFormValid">Enviar mensaje</button>
+          </form>
+        } @else {
+          <div class="contact-success">
+            <div class="contact-success-icon">
+              <svg viewBox="0 0 48 48" width="60" height="60" aria-hidden="true">
+                <circle cx="24" cy="24" r="22" fill="var(--purple-dark)" />
+                <polyline points="15,24 22,31 34,18" fill="none" stroke="white" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+            </div>
+            <h2 class="contact-success-title">¡SOLICITUD RECIBIDA!</h2>
+            <p class="contact-success-message">
+              Su solicitud ha sido enviada correctamente.
+              Un profesional se pondrá en contacto con usted pronto.
+            </p>
+            <button class="btn btn-primary" (click)="contactSubmitted = false; contactForm = { nombre: '', email: '', mensaje: '' }">Volver a inicio</button>
+          </div>
+        }
+      </section>
+    </div>
+
+    <!-- Barra lateral -->
+    <aside class="sidebar" id="sidebar">
+
+      <!-- Suscripción boletín -->
+      <section class="sidebar-box newsletter-box" id="newsletter">
+        @if (!newsletterSubmitted) {
+          <h2 class="sidebar-title">Suscripción Boletín</h2>
+          <p>Recibe novedades y recursos para emprendedores.</p>
+          <br />
+          <form class="newsletter-form" (submit)="onNewsletterSubmit($event)">
+            <label for="newsletter-email" class="visually-hidden">Correo electrónico</label>
+            <input
+              type="email"
+              id="newsletter-email"
+              name="newsletter-email"
+              [(ngModel)]="newsletterEmail"
+              required
+              placeholder="tu@email.com"
+            />
+            <button type="submit" class="btn btn-primary btn-block">Suscribirme</button>
+          </form>
+        } @else {
+          <div class="newsletter-success">
+            <img src="/images/newsletter-success.png" alt="Sobre con check de confirmación" class="newsletter-success-img" />
+            <h2 class="newsletter-success-title">¡GRACIAS POR SUSCRIBIRTE!</h2>
+            <p class="newsletter-success-message">
+              Verifica tu bandeja de entrada para ver correo de confirmación,
+              <strong>¡No olvides revisar la carpeta de spam!</strong>
+            </p>
+          </div>
+        }
+      </section>
+
+      <!-- Blog recientes -->
+      <section class="sidebar-box" id="blog">
+        <h2 class="sidebar-title">Blog Recientes</h2>
+        <ul class="blog-list">
+          @for (post of blogPosts; track post.title) {
+            <li class="blog-item">
+              <img [src]="post.image" [alt]="post.title" class="blog-thumb" loading="lazy" />
+              <div class="blog-text">
+                <a [routerLink]="post.route"><strong>{{ post.title }}</strong></a>
+                <br />
+                <span>{{ post.excerpt }}</span>
+              </div>
+            </li>
+          }
+        </ul>
+      </section>
+    </aside>
+  </div>
+</main>
