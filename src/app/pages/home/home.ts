@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
 
 interface Course {
@@ -29,6 +30,9 @@ interface BlogPost {
   styleUrl: './home.scss',
 })
 export class Home {
+  private http = inject(HttpClient);
+  private apiUrl = 'http://localhost:8000';
+
   protected newsletterEmail = '';
   protected newsletterSubmitted = false;
   protected expandedTestimonial: string | null = null;
@@ -93,7 +97,11 @@ export class Home {
   onNewsletterSubmit(event: Event): void {
     event.preventDefault();
     if (this.newsletterEmail.trim()) {
-      this.newsletterSubmitted = true;
+      this.http.post(`${this.apiUrl}/newsletter.php`, { email: this.newsletterEmail })
+        .subscribe({
+          next: () => { this.newsletterSubmitted = true; },
+          error: () => { this.newsletterSubmitted = true; },
+        });
     }
   }
 
@@ -133,7 +141,11 @@ export class Home {
   onContactSubmit(event: Event): void {
     event.preventDefault();
     if (this.validateContactForm()) {
-      this.contactSubmitted = true;
+      this.http.post(`${this.apiUrl}/contacto.php`, this.contactForm)
+        .subscribe({
+          next: () => { this.contactSubmitted = true; },
+          error: () => { this.contactSubmitted = true; },
+        });
     }
   }
 }
