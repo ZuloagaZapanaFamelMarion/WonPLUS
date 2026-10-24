@@ -7,9 +7,21 @@ import { BlogPost3 } from './pages/blog/blog-post-3/blog-post-3';
 import { FundamentosEmprendimiento } from './pages/cursos/fundamentos-emprendimiento/fundamentos-emprendimiento';
 import { MarketingDigital } from './pages/cursos/marketing-digital/marketing-digital';
 import { LiderazgoEquipos } from './pages/cursos/liderazgo-equipos/liderazgo-equipos';
+import { Login } from './pages/login/login';
+import { Dashboard } from './pages/dashboard/dashboard';
+import { RegistrarVenta } from './pages/registrar-venta/registrar-venta';
+import { VentaCobrada } from './pages/venta-cobrada/venta-cobrada';
+import { GestionProductos } from './pages/gestion-productos/gestion-productos';
+import { HistorialVentas } from './pages/historial-ventas/historial-ventas';
 
 export const routes: Routes = [
   { path: '', component: Home },
+  { path: 'login', component: Login },
+  { path: 'dashboard', component: Dashboard },
+  { path: 'registrar-venta', component: RegistrarVenta },
+  { path: 'venta-cobrada', component: VentaCobrada },
+  { path: 'gestion-productos', component: GestionProductos },
+  { path: 'historial-ventas', component: HistorialVentas },
   { path: 'newsletter-success', component: NewsletterSuccess },
   { path: 'blog/5-claves-iniciar-negocio', component: BlogPost1 },
   { path: 'blog/finanzas-emprendedores', component: BlogPost2 },

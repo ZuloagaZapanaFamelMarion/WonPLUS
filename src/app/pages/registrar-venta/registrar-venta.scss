@@ -1,0 +1,140 @@
+.sale-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 2.5rem 1.5rem 3.5rem;
+  min-height: 60vh;
+}
+
+.sale-kicker,
+.sale-panel-title {
+  font-size: 0.85rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--purple-primary);
+}
+
+.sale-title {
+  font-size: clamp(1.8rem, 4vw, 2.4rem);
+  font-weight: 800;
+  color: var(--gray-800);
+  margin: 0.35rem 0 0.4rem;
+}
+
+.sale-subtitle {
+  color: var(--gray-600);
+  margin-bottom: 1.75rem;
+}
+
+.sale-layout {
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 1.5rem;
+}
+
+.sale-panel {
+  background-color: var(--purple-soft);
+  border: 2px solid var(--gray-200);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  box-shadow: var(--shadow-sm);
+}
+
+.sale-label,
+.sale-panel-title {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.sale-search {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--gray-200);
+  border-radius: 8px;
+  background-color: var(--white);
+  margin-bottom: 1rem;
+}
+
+.sale-search:focus {
+  outline: none;
+  border-color: var(--purple-primary);
+  box-shadow: 0 0 0 3px rgba(123, 94, 167, 0.2);
+}
+
+.product-results,
+.cart-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.product-result,
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  background-color: var(--white);
+  border-radius: 10px;
+  padding: 0.85rem 1rem;
+}
+
+.product-result span,
+.cart-item span {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.cart-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cart-subtotal {
+  font-weight: 800;
+  color: var(--purple-dark);
+}
+
+.qty-btn {
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--purple-primary);
+  color: var(--white);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.sale-total {
+  margin: 1.25rem 0;
+  font-size: 1.1rem;
+  color: var(--gray-800);
+}
+
+.empty-state {
+  color: var(--gray-600);
+  margin: 0.5rem 0 1rem;
+}
+
+.field-error {
+  font-size: 0.85rem;
+  color: var(--alert-red);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+}
+
+.sale-back {
+  display: inline-block;
+  margin-top: 1.75rem;
+  font-weight: 700;
+}
+
+@media (max-width: 900px) {
+  .sale-layout {
+    grid-template-columns: 1fr;
+  }
+}

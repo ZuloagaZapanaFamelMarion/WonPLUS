@@ -1,0 +1,73 @@
+<section class="products-page">
+  <header class="products-header">
+    <div>
+      <p class="products-kicker">Pantalla 4</p>
+      <h1 class="products-title">Gestión de Productos</h1>
+      <p class="products-subtitle">Consulta, agrega o edita productos. El stock bajo se marca en rojo.</p>
+    </div>
+    <a routerLink="/historial-ventas" class="btn btn-primary">Historial</a>
+  </header>
+
+  <form class="product-form" (submit)="saveProduct($event)">
+    <h2 class="products-form-title">{{ editingId === null ? 'Agregar producto' : 'Editar producto' }}</h2>
+    <div class="form-grid">
+      <div class="form-row">
+        <label for="product-name">Nombre</label>
+        <input id="product-name" name="name" type="text" [(ngModel)]="form.name" placeholder="Nombre del producto" />
+      </div>
+      <div class="form-row">
+        <label for="product-price">Precio</label>
+        <input id="product-price" name="price" type="number" min="0" [(ngModel)]="form.price" placeholder="0" />
+      </div>
+      <div class="form-row">
+        <label for="product-stock">Stock</label>
+        <input id="product-stock" name="stock" type="number" min="0" [(ngModel)]="form.stock" placeholder="0" />
+      </div>
+    </div>
+    @if (formError) {
+      <p class="field-error">{{ formError }}</p>
+    }
+    <div class="form-actions">
+      <button type="submit" class="btn btn-primary">{{ editingId === null ? 'Agregar' : 'Guardar cambios' }}</button>
+      @if (editingId !== null) {
+        <button type="button" class="btn btn-outline" (click)="cancelEdit()">Cancelar</button>
+      }
+    </div>
+  </form>
+
+  <div class="table-wrapper">
+    <table class="products-table">
+      <caption>Inventario de productos</caption>
+      <thead>
+        <tr>
+          <th scope="col">Producto</th>
+          <th scope="col">Precio</th>
+          <th scope="col">Stock</th>
+          <th scope="col">Estado</th>
+          <th scope="col">Acciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (product of catalog(); track product.id) {
+          <tr [class.low-stock]="isLowStock(product)">
+            <td>{{ product.name }}</td>
+            <td>{{ formatMoney(product.price) }}</td>
+            <td>{{ product.stock }}</td>
+            <td>
+              @if (isLowStock(product)) {
+                <span class="stock-alert">Stock bajo</span>
+              } @else {
+                <span class="stock-ok">Disponible</span>
+              }
+            </td>
+            <td>
+              <button type="button" class="btn btn-outline" (click)="startEdit(product)">Editar</button>
+            </td>
+          </tr>
+        }
+      </tbody>
+    </table>
+  </div>
+
+  <a routerLink="/dashboard" class="products-back">Volver al dashboard</a>
+</section>

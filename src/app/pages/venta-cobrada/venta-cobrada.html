@@ -1,0 +1,22 @@
+<section class="charged-page">
+  <div class="charged-card">
+    <p class="charged-kicker">Venta registrada</p>
+    <h1 class="charged-title">Cobro realizado</h1>
+
+    @if (sale(); as currentSale) {
+      <p class="charged-total">Total cobrado: <strong>{{ formatMoney(currentSale.total) }}</strong></p>
+      <ul class="charged-items">
+        @for (item of currentSale.items; track item.productId) {
+          <li>{{ item.quantity }} × {{ item.name }}</li>
+        }
+      </ul>
+    } @else {
+      <p class="charged-empty">No hay una venta reciente para mostrar.</p>
+    }
+
+    <div class="charged-actions">
+      <a routerLink="/gestion-productos" class="btn btn-primary btn-lg">Gestión de productos</a>
+      <a routerLink="/dashboard" class="btn btn-outline">Volver al dashboard</a>
+    </div>
+  </div>
+</section>

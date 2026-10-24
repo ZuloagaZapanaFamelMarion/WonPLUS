@@ -23,6 +23,14 @@
   font-weight: 400;
 }
 
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.85rem;
+}
+
 /* ===== GRID PRINCIPAL ===== */
 .site-main {
   max-width: 1200px;

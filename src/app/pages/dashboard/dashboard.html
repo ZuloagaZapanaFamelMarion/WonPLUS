@@ -1,0 +1,48 @@
+<section class="dashboard">
+  <header class="dashboard-header">
+    <p class="dashboard-kicker">Panel principal</p>
+    <h1 class="dashboard-title">Dashboard</h1>
+    <p class="dashboard-subtitle">Resumen de tu emprendimiento para el día de hoy.</p>
+  </header>
+
+  <div class="dashboard-grid">
+    @for (card of cards; track card.title) {
+      <article class="dashboard-card animate-slide-up" [attr.data-icon]="card.icon">
+        <div class="dashboard-card-icon" aria-hidden="true">
+          @if (card.icon === 'sales') {
+            <svg viewBox="0 0 48 48" width="40" height="40">
+              <rect x="8" y="28" width="8" height="12" rx="2" fill="currentColor" />
+              <rect x="20" y="18" width="8" height="22" rx="2" fill="currentColor" />
+              <rect x="32" y="10" width="8" height="30" rx="2" fill="currentColor" />
+            </svg>
+          }
+          @if (card.icon === 'stock') {
+            <svg viewBox="0 0 48 48" width="40" height="40">
+              <path
+                fill="currentColor"
+                d="M10 14h28l-2 22H12L10 14zm4-6h20l2 4H12l2-4z"
+              />
+            </svg>
+          }
+          @if (card.icon === 'profit') {
+            <svg viewBox="0 0 48 48" width="40" height="40">
+              <path
+                fill="currentColor"
+                d="M10 34l10-10 6 6 12-14v8h4V12H28v4h8L26 28l-6-6-12 12 2 2z"
+              />
+            </svg>
+          }
+        </div>
+        <h2 class="dashboard-card-title">{{ card.title }}</h2>
+        <p class="dashboard-card-value">{{ card.value }}</p>
+        <p class="dashboard-card-detail">{{ card.detail }}</p>
+      </article>
+    }
+  </div>
+
+  <div class="dashboard-actions">
+    <a routerLink="/" class="btn btn-outline">Volver al inicio</a>
+    <a routerLink="/registrar-venta" class="btn btn-primary">Registrar venta</a>
+    <a routerLink="/gestion-productos" class="btn btn-primary">Gestión de productos</a>
+  </div>
+</section>

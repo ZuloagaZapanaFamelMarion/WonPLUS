@@ -1,0 +1,77 @@
+<section class="sale-page">
+  <header class="sale-header">
+    <p class="sale-kicker">Pantalla 3</p>
+    <h1 class="sale-title">Registrar Venta</h1>
+    <p class="sale-subtitle">Busca productos por nombre, agrégalos a la lista y cobra.</p>
+  </header>
+
+  <div class="sale-layout">
+    <section class="sale-panel">
+      <label class="sale-label" for="product-search">Buscador de productos</label>
+      <input
+        id="product-search"
+        type="search"
+        class="sale-search"
+        name="product-search"
+        [(ngModel)]="searchValue"
+        placeholder="Escribe el nombre del producto"
+      />
+
+      <ul class="product-results">
+        @for (product of results(); track product.id) {
+          <li class="product-result">
+            <div>
+              <strong>{{ product.name }}</strong>
+              <span>{{ formatMoney(product.price) }} · Stock: {{ product.stock }}</span>
+            </div>
+            <button
+              type="button"
+              class="btn btn-outline"
+              [disabled]="product.stock <= 0"
+              (click)="addToCart(product.id)"
+            >
+              Agregar
+            </button>
+          </li>
+        } @empty {
+          <li class="empty-state">No hay productos con ese nombre.</li>
+        }
+      </ul>
+    </section>
+
+    <section class="sale-panel">
+      <h2 class="sale-panel-title">Productos agregados</h2>
+
+      @if (cart().length) {
+        <ul class="cart-list">
+          @for (item of cart(); track item.productId) {
+            <li class="cart-item">
+              <div>
+                <strong>{{ item.name }}</strong>
+                <span>{{ item.quantity }} × {{ formatMoney(item.price) }}</span>
+              </div>
+              <div class="cart-actions">
+                <span class="cart-subtotal">{{ formatMoney(item.price * item.quantity) }}</span>
+                <button type="button" class="qty-btn" (click)="decreaseQuantity(item.productId)">−</button>
+                <button type="button" class="qty-btn" (click)="removeFromCart(item.productId)">✕</button>
+              </div>
+            </li>
+          }
+        </ul>
+        <p class="sale-total">Total: <strong>{{ formatMoney(total()) }}</strong></p>
+      } @else {
+        <p class="empty-state">Aún no has agregado productos.</p>
+      }
+
+      @if (chargeError) {
+        <p class="field-error">{{ chargeError }}</p>
+      }
+
+      <button type="button" class="btn btn-success btn-lg btn-block" [disabled]="!cart().length" (click)="charge()">
+        Cobrar
+      </button>
+    </section>
+  </div>
+
+  <a routerLink="/dashboard" class="sale-back">Volver al dashboard</a>
+</section>

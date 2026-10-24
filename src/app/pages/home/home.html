@@ -4,7 +4,10 @@
     <h1>EMPRENDE.</h1>
     <p class="hero-subtitle">Te brindamos acompañamiento para emprender SEGURO.</p>
     <br />
-    <a href="#cursos" class="btn btn-primary btn-lg">Ver opciones</a>
+    <div class="hero-actions">
+      <a href="#cursos" class="btn btn-primary btn-lg">Ver opciones</a>
+      <a routerLink="/login" class="btn btn-outline btn-lg">Iniciar sesión</a>
+    </div>
   </div>
 </section>
 
@@ -134,7 +137,7 @@
                 <span class="field-error">{{ contactErrors.mensaje }}</span>
               }
             </div>
-            <button type="submit" class="btn btn-primary" [disabled]="!isContactFormValid">Enviar mensaje</button>
+            <button type="submit" class="btn btn-primary" >Enviar mensaje</button>
           </form>
         } @else {
           <div class="contact-success">
@@ -150,6 +153,12 @@
               Un profesional se pondrá en contacto con usted pronto.
             </p>
             <button class="btn btn-primary" (click)="contactSubmitted = false; contactForm = { nombre: '', email: '', mensaje: '' }">Volver a inicio</button>
+          </div>
+        }
+        @if (contactEvent()) {
+          <div class="event-log" aria-live="polite">
+            <p class="event-log-label">Registro de eventos</p>
+            <p class="event-log-line">{{ contactEvent() }}</p>
           </div>
         }
       </section>
@@ -184,6 +193,12 @@
               Verifica tu bandeja de entrada para ver correo de confirmación,
               <strong>¡No olvides revisar la carpeta de spam!</strong>
             </p>
+          </div>
+        }
+        @if (newsletterEvent()) {
+          <div class="event-log" aria-live="polite">
+            <p class="event-log-label">Registro de eventos</p>
+            <p class="event-log-line">{{ newsletterEvent() }}</p>
           </div>
         }
       </section>

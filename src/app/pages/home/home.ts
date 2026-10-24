@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClient } from '@angular/common/http';
 import { RouterLink } from '@angular/router';
+import { EventLogService } from '../../services/event-log.service';
 
 interface Course {
   title: string;
@@ -31,7 +32,10 @@ interface BlogPost {
 })
 export class Home {
   private http = inject(HttpClient);
+  private events = inject(EventLogService);
   private apiUrl = 'http://localhost:8000';
+  protected newsletterEvent = signal('');
+  protected contactEvent = signal('');
 
   protected newsletterEmail = '';
   protected newsletterSubmitted = false;
@@ -96,13 +100,21 @@ export class Home {
 
   onNewsletterSubmit(event: Event): void {
     event.preventDefault();
-    if (this.newsletterEmail.trim()) {
-      this.http.post(`${this.apiUrl}/newsletter.php`, { email: this.newsletterEmail })
-        .subscribe({
-          next: () => { this.newsletterSubmitted = true; },
-          error: () => { this.newsletterSubmitted = true; },
-        });
+    const email = this.newsletterEmail.trim();
+    if (!email) {
+      this.newsletterEvent.set(this.events.record('BOLETIN', 'rechazo: correo vacío').text);
+      return;
     }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      this.newsletterEvent.set(this.events.record('BOLETIN', 'rechazo: correo inválido').text);
+      return;
+    }
+    this.newsletterEvent.set(this.events.record('BOLETIN', 'suscripción registrada').text);
+    this.http.post(`${this.apiUrl}/newsletter.php`, { email })
+      .subscribe({
+        next: () => { this.newsletterSubmitted = true; },
+        error: () => { this.newsletterSubmitted = true; },
+      });
   }
 
   validateContactForm(): boolean {
@@ -127,6 +139,15 @@ export class Home {
       valid = false;
     }
 
+    if (!valid) {
+      const reason =
+        this.contactErrors.nombre ??
+        this.contactErrors.email ??
+        this.contactErrors.mensaje ??
+        'datos incompletos';
+      this.contactEvent.set(this.events.record('CONTACTO', `rechazo: ${reason}`).text);
+    }
+
     return valid;
   }
 
@@ -141,6 +162,7 @@ export class Home {
   onContactSubmit(event: Event): void {
     event.preventDefault();
     if (this.validateContactForm()) {
+      this.contactEvent.set(this.events.record('CONTACTO', 'mensaje registrado').text);
       this.http.post(`${this.apiUrl}/contacto.php`, this.contactForm)
         .subscribe({
           next: () => { this.contactSubmitted = true; },

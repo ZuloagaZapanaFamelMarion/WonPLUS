@@ -23,6 +23,10 @@
   --radius: 12px;
   --transition: 0.3s ease;
   --font-main: 'Nunito', 'Segoe UI', sans-serif;
+  --green: #2e7d32;
+  --green-dark: #1b5e20;
+  --alert-red: #d32f2f;
+  --alert-red-soft: #fdecea;
 }
 
 html {
@@ -85,6 +89,36 @@ select {
   box-shadow: var(--shadow-md);
 }
 
+.btn-outline {
+  background-color: transparent;
+  color: var(--purple-primary);
+  border: 2px solid var(--purple-primary);
+}
+
+.btn-outline:hover {
+  background-color: var(--purple-primary);
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success {
+  background-color: var(--green);
+  color: var(--white);
+}
+
+.btn-success:hover:not(:disabled) {
+  background-color: var(--green-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-success:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
 .btn-lg {
   padding: 0.85rem 2.5rem;
   font-size: 1.05rem;
@@ -109,4 +143,28 @@ select {
   clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
+}
+
+.event-log {
+  margin-top: 1.25rem;
+  padding: 0.85rem 1rem;
+  border-radius: 8px;
+  background: #1e1b2e;
+  color: #f3eef9;
+}
+
+.event-log-label {
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #a88fd4;
+  margin-bottom: 0.35rem;
+}
+
+.event-log-line {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  line-height: 1.45;
+  word-break: break-word;
 }

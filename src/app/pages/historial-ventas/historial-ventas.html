@@ -1,0 +1,61 @@
+<section class="history-page">
+  <header class="history-header">
+    <p class="history-kicker">Historial</p>
+    <h1 class="history-title">Historial de ventas</h1>
+    <p class="history-subtitle">Consulta las ventas de hoy, de la semana y del mes.</p>
+  </header>
+
+  <div class="history-cards">
+    @for (summary of summaries(); track summary.id) {
+      <button
+        type="button"
+        class="history-card"
+        [class.active]="period() === summary.id"
+        (click)="selectPeriod(summary.id)"
+      >
+        <h2>{{ summary.title }}</h2>
+        <p class="history-value">{{ formatMoney(totalOf(summary.sales)) }}</p>
+        <p class="history-count">{{ summary.sales.length }} ventas</p>
+      </button>
+    }
+  </div>
+
+  <section class="history-table-block">
+    <div class="history-toolbar">
+      <h2 class="history-table-title">{{ visibleTitle() }}</h2>
+      <button type="button" class="btn btn-primary" (click)="downloadExcel()">
+        Descargar Excel
+      </button>
+    </div>
+    @if (downloadNote()) {
+      <p class="history-download-note">{{ downloadNote() }}</p>
+    }
+    <div class="table-wrapper">
+      <table class="history-table">
+        <caption>Detalle de ventas</caption>
+        <thead>
+          <tr>
+            <th scope="col">Fecha</th>
+            <th scope="col">Productos</th>
+            <th scope="col">Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (sale of visibleSales(); track sale.id) {
+            <tr>
+              <td>{{ formatDate(sale.date) }}</td>
+              <td>{{ itemsLabel(sale) }}</td>
+              <td>{{ formatMoney(sale.total) }}</td>
+            </tr>
+          } @empty {
+            <tr>
+              <td colspan="3">No hay ventas registradas en este periodo.</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <a routerLink="/gestion-productos" class="history-back">Volver a gestión de productos</a>
+</section>
