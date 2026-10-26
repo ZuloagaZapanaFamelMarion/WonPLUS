@@ -43,3 +43,7 @@ __screenshots__/
 .DS_Store
 Thumbs.db
 /nbproject/private/
+
+# Aplicación Java WonPLUS
+/wonplus-java/target/
+/wonplus-java/logs/
