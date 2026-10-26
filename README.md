@@ -68,7 +68,7 @@ Las pruebas cubren el cálculo de la venta, los periodos de consulta, el cifrado
 ## Archivos
 
 - Informe del avance 3: [`wonplus-java/avance-3/Avance_3_WonPLUS.pdf`](wonplus-java/avance-3/Avance_3_WonPLUS.pdf)
-- Presentación: [`wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pptx`](wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pptx)
+- Presentación: [`wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pdf`](wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pdf)
 
 ## Commits
 

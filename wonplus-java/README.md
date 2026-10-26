@@ -33,7 +33,7 @@ La arquitectura, las once pantallas, la seguridad y las librerías están descri
 ## Archivos
 
 - Informe del avance 3: [avance-3/Avance_3_WonPLUS.pdf](avance-3/Avance_3_WonPLUS.pdf)
-- Presentación: [avance-3/WonPLUS_Avance_3_Presentacion.pptx](avance-3/WonPLUS_Avance_3_Presentacion.pptx)
+- Presentación: [avance-3/WonPLUS_Avance_3_Presentacion.pdf](avance-3/WonPLUS_Avance_3_Presentacion.pdf)
 
 ## Commits
 
