@@ -1,59 +1,59 @@
-# WonplusApp
+# WonPLUS
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.1.0.
+Sistema de escritorio para que una micro o pequeña empresa registre ventas, controle su inventario y consulte resultados. La aplicación actual está en [`wonplus-java`](wonplus-java) y está hecha en Java 21, con Maven, Swing y PostgreSQL.
 
-## Development server
+## Qué hace
 
-To start a local development server, run:
+- Ingreso con dos roles: administrador y vendedor.
+- Registro y edición de usuarios, categorías y productos.
+- Registro de ventas, con ticket, historial y detalle.
+- Descuento automático del stock al confirmar una venta y alerta cuando un producto llega al mínimo.
+- Reportes por periodo y exportación a Excel.
 
-```bash
-ng serve
-```
+El vendedor registra ventas y consulta reportes. El administrador, además, gestiona usuarios, categorías y productos. Quedan fuera de esta versión la facturación electrónica, la conexión con SUNAT y el lector de código de barras.
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+La arquitectura, las pantallas, la seguridad y las librerías están descritas en [`wonplus-java/docs/arquitectura.md`](wonplus-java/docs/arquitectura.md).
 
-## Code scaffolding
+## Cómo está organizado
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Las pantallas Swing se comunican con `ControladorPrincipal`. El controlador llama a los servicios y los servicios usan interfaces DAO para guardar la información en PostgreSQL. Las contraseñas se almacenan con PBKDF2 y las consultas usan parámetros, no texto armado.
 
-```bash
-ng generate component component-name
-```
+El proyecto usa Google Guava, Apache POI, Apache Commons y Logback. Apache POI genera el Excel de reportes.
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+## Requisitos
 
-```bash
-ng generate --help
-```
+- JDK 21
+- Maven
+- PostgreSQL en `localhost:5432`, con la base y el usuario `wonplus`
 
-## Building
+La conexión se lee de `wonplus-java/db.properties`. Al iniciar, la aplicación crea las tablas y carga datos de demostración si la base está vacía.
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+## Ejecutar
 
 ```bash
-ng test
+cd wonplus-java
+chmod +x ejecutar.sh
+./ejecutar.sh
 ```
 
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
+También se puede construir y abrir el programa con Maven:
 
 ```bash
-ng e2e
+cd wonplus-java
+mvn -q package
+java -jar target/wonplus-1.0.0.jar
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+Cuentas de demostración:
 
-## Additional Resources
+- Administrador: `admin@wonplus.pe` / `Admin123`
+- Vendedor: `vendedor@wonplus.pe` / `Venta123`
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Pruebas
+
+```bash
+cd wonplus-java
+mvn test
+```
+
+Las pruebas cubren el cálculo de la venta, los periodos de consulta, el cifrado de contraseñas y la exportación a Excel.
