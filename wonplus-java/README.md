@@ -33,7 +33,7 @@ La arquitectura, las once pantallas, la seguridad y las librerías están descri
 ## Archivos del repositorio
 
 - PDF del avance 3: [avance-3/Avance_3_WonPLUS.pdf](avance-3/Avance_3_WonPLUS.pdf). Es el avance 2 completo más lo construido en esta entrega.
-- PPT explicativo: se agrega a esta lista cuando el archivo esté en el repositorio.
+- PPT explicativo: [avance-3/WonPLUS_Avance_3_Presentacion.pptx](avance-3/WonPLUS_Avance_3_Presentacion.pptx).
 - Commits con evidencia: cada enlace abre el cambio en GitHub.
 
 | Commit | Qué deja publicado | Evidencia |

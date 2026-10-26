@@ -68,7 +68,7 @@ Las pruebas cubren el cálculo de la venta, los periodos de consulta, el cifrado
 ## Archivos del repositorio
 
 - PDF del avance 3: [`wonplus-java/avance-3/Avance_3_WonPLUS.pdf`](wonplus-java/avance-3/Avance_3_WonPLUS.pdf). Es el avance 2 completo más lo construido en esta entrega.
-- PPT explicativo: se agrega a esta lista cuando el archivo esté en el repositorio.
+- PPT explicativo: [`wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pptx`](wonplus-java/avance-3/WonPLUS_Avance_3_Presentacion.pptx).
 - Commits con evidencia: la tabla de abajo. Cada enlace abre el commit en GitHub.
 - Tabla comparativa con la rúbrica: va al final de este archivo.
 
