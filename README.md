@@ -12,7 +12,7 @@ Sistema de escritorio para que una micro o pequeña empresa registre ventas, con
 
 El vendedor registra ventas y consulta reportes. El administrador, además, gestiona usuarios, categorías y productos. Quedan fuera de esta versión la facturación electrónica, la conexión con SUNAT y el lector de código de barras.
 
-La arquitectura, las pantallas, la seguridad y las librerías están descritas en [`wonplus-java/docs/arquitectura.md`](wonplus-java/docs/arquitectura.md).
+La arquitectura, las pantallas, la seguridad y las librerías están descritas en [`wonplus-java/docs/arquitectura.md`](wonplus-java/docs/arquitectura.md). El informe del avance 3, continuación del avance 2, está en [`wonplus-java/avance-3/Avance_3_WonPLUS.pdf`](wonplus-java/avance-3/Avance_3_WonPLUS.pdf).
 
 ## Cómo está organizado
 
@@ -24,9 +24,16 @@ El proyecto usa Google Guava, Apache POI, Apache Commons y Logback. Apache POI g
 
 - JDK 21
 - Maven
-- PostgreSQL en `localhost:5432`, con la base y el usuario `wonplus`
+- PostgreSQL en `localhost:5432`, con la base `wonplus`
 
-La conexión se lee de `wonplus-java/db.properties`. Al iniciar, la aplicación crea las tablas y carga datos de demostración si la base está vacía.
+La clave de la base no está en Git. Copie el ejemplo y complete la clave local:
+
+```bash
+cd wonplus-java
+cp db.properties.example db.properties
+```
+
+Al iniciar, la aplicación crea las tablas y carga datos de demostración si la base está vacía.
 
 ## Ejecutar
 

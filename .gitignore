@@ -47,3 +47,5 @@ Thumbs.db
 # Aplicación Java WonPLUS
 /wonplus-java/target/
 /wonplus-java/logs/
+/wonplus-java/db.properties
+/wonplus-java/src/main/resources/db.properties

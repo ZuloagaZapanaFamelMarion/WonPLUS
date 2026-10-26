@@ -72,6 +72,8 @@ Maven declara y el código usa estas cuatro librerías:
 
 ## Datos
 
+La conexión se lee de `db.properties` en el equipo local. El repositorio solo publica `db.properties.example`; el archivo con la clave no entra a Git.
+
 PostgreSQL guarda cinco tablas, definidas en `src/main/resources/schema.sql`.
 
 - `usuario`: nombre, correo único, `password_hash`, rol (`ADMIN` o `VENDEDOR`) y `activo`.

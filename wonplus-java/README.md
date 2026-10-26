@@ -6,9 +6,13 @@ Sistema de ventas e inventario en Java 21, Maven, Swing y PostgreSQL.
 
 - JDK 21
 - Maven
-- PostgreSQL con la base `wonplus` y el usuario `wonplus` / `wonplus`
+- PostgreSQL con la base `wonplus`
 
-La conexión se lee de `db.properties`.
+La conexión no se versiona. Copie el ejemplo y ponga la clave local:
+
+```bash
+cp db.properties.example db.properties
+```
 
 ## Ejecutar
 
@@ -24,4 +28,4 @@ Cuentas de demostración:
 
 El vendedor no ve usuarios, productos ni categorías. Las pruebas se ejecutan con `mvn test`.
 
-La arquitectura, las once pantallas, la seguridad y las librerías están descritas en [docs/arquitectura.md](docs/arquitectura.md).
+La arquitectura, las once pantallas, la seguridad y las librerías están descritas en [docs/arquitectura.md](docs/arquitectura.md). El informe del avance 3, continuación del avance 2, está en [avance-3/Avance_3_WonPLUS.pdf](avance-3/Avance_3_WonPLUS.pdf).

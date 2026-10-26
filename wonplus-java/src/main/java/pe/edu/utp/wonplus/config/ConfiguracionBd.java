@@ -28,7 +28,8 @@ public final class ConfiguracionBd {
             } else {
                 try (InputStream entrada = ConfiguracionBd.class.getResourceAsStream("/db.properties")) {
                     if (entrada == null) {
-                        throw new IllegalStateException("No se encontró db.properties");
+                        throw new IllegalStateException(
+                                "No se encontró db.properties. Copie db.properties.example a db.properties");
                     }
                     propiedades.load(entrada);
                 }
