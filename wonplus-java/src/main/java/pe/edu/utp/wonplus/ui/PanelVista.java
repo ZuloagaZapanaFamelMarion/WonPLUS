@@ -20,9 +20,9 @@ public final class PanelVista extends Vista {
 
         JPanel grilla = new JPanel(new GridLayout(1, 3, 16, 16));
         grilla.setOpaque(false);
-        grilla.add(tarjetaIndicador("Ventas de hoy", ventas, "Operaciones registradas hoy"));
-        grilla.add(tarjetaIndicador("Stock bajo", stock, "Productos en o bajo el mínimo"));
-        grilla.add(tarjetaIndicador("Ganancia del día", ganancia, "Precio de venta menos costo"));
+        grilla.add(tarjetaIndicador("Ventas de hoy", ventas, "Operaciones registradas hoy", Estilo.ACENTO));
+        grilla.add(tarjetaIndicador("Stock bajo", stock, "Productos en o bajo el mínimo", Estilo.ACENTO_OSCURO));
+        grilla.add(tarjetaIndicador("Ganancia del día", ganancia, "Precio de venta menos costo", Estilo.ACENTO_SUAVE));
         add(grilla, BorderLayout.CENTER);
 
         JPanel acciones = new JPanel();
@@ -44,25 +44,28 @@ public final class PanelVista extends Vista {
         ganancia.setText(Formatos.dinero(resumen.ganancia()));
     }
 
-    private JPanel tarjetaIndicador(String titulo, JLabel valor, String detalle) {
+    private JPanel tarjetaIndicador(String titulo, JLabel valor, String detalle, java.awt.Color fondo) {
         JPanel texto = new JPanel(new GridLayout(3, 1, 0, 6));
         texto.setOpaque(false);
         JLabel tituloLabel = new JLabel(titulo);
-        tituloLabel.setForeground(Estilo.SUAVE);
+        tituloLabel.setForeground(java.awt.Color.WHITE);
         valor.setFont(Estilo.TITULO);
+        valor.setForeground(java.awt.Color.WHITE);
         JLabel detalleLabel = new JLabel(detalle);
-        detalleLabel.setForeground(Estilo.SUAVE);
+        detalleLabel.setForeground(new java.awt.Color(0xF3EEF9));
         texto.add(tituloLabel);
         texto.add(valor);
         texto.add(detalleLabel);
         JPanel tarjeta = tarjeta(texto);
+        tarjeta.setBackground(fondo);
+        tarjeta.setBorder(javax.swing.BorderFactory.createEmptyBorder(16, 16, 16, 16));
         tarjeta.setPreferredSize(new Dimension(220, 140));
         return tarjeta;
     }
 
     private JLabel dato() {
         JLabel etiqueta = new JLabel("—");
-        etiqueta.setForeground(Estilo.TEXTO);
+        etiqueta.setForeground(java.awt.Color.WHITE);
         return etiqueta;
     }
 }

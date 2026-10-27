@@ -84,7 +84,7 @@ public final class MarcoPrincipal extends JFrame implements Navegacion {
         menu.add(marca);
         Usuario usuario = controlador.sesion();
         sesion.setText(usuario == null ? " " : "  " + usuario.nombre());
-        sesion.setForeground(new Color(0xD5E8E1));
+        sesion.setForeground(Estilo.TARJETA_CLARA);
         sesion.setAlignmentX(LEFT_ALIGNMENT);
         menu.add(sesion);
         menu.add(Box.createVerticalStrut(16));

@@ -46,7 +46,7 @@ public abstract class Vista extends JPanel {
         JPanel panel = new JPanel(new BorderLayout());
         panel.setBackground(Color.WHITE);
         panel.setBorder(BorderFactory.createCompoundBorder(
-                BorderFactory.createLineBorder(new Color(0xE2E8E5)),
+                BorderFactory.createLineBorder(new Color(0xE8E0F0)),
                 BorderFactory.createEmptyBorder(16, 16, 16, 16)
         ));
         panel.add(contenido, BorderLayout.CENTER);
@@ -58,7 +58,10 @@ public abstract class Vista extends JPanel {
         tabla.setRowHeight(28);
         tabla.setFont(Estilo.TEXTO_NORMAL);
         tabla.getTableHeader().setFont(Estilo.BOTON);
-        tabla.setSelectionBackground(new Color(0xD9EFE6));
+        tabla.setSelectionBackground(new Color(0xE8E0F0));
+        tabla.getTableHeader().setBackground(Estilo.ACENTO);
+        tabla.getTableHeader().setForeground(Color.WHITE);
+        tabla.getTableHeader().setOpaque(true);
         tabla.setFillsViewportHeight(true);
         return tabla;
     }

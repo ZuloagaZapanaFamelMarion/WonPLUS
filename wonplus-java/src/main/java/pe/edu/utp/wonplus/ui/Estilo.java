@@ -10,13 +10,16 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 
 public final class Estilo {
-    public static final Color FONDO = new Color(0xF3F6F4);
-    public static final Color BARRA = new Color(0x0F3D34);
-    public static final Color BARRA_ACTIVA = new Color(0x1B5C4E);
-    public static final Color ACENTO = new Color(0x1F7A4D);
-    public static final Color PELIGRO = new Color(0xFDECEC);
-    public static final Color TEXTO = new Color(0x1C2B27);
-    public static final Color SUAVE = new Color(0x5C6F68);
+    public static final Color FONDO = new Color(0xFAFAFA);
+    public static final Color BARRA = new Color(0x5C4580);
+    public static final Color BARRA_ACTIVA = new Color(0x7B5EA7);
+    public static final Color ACENTO = new Color(0x7B5EA7);
+    public static final Color ACENTO_OSCURO = new Color(0x5C4580);
+    public static final Color ACENTO_SUAVE = new Color(0x6B5B8A);
+    public static final Color TARJETA_CLARA = new Color(0xF3EEF9);
+    public static final Color PELIGRO = new Color(0xFDECEA);
+    public static final Color TEXTO = new Color(0x222222);
+    public static final Color SUAVE = new Color(0x6B5B8A);
     public static final Font TITULO = new Font("SansSerif", Font.BOLD, 26);
     public static final Font SUBTITULO = new Font("SansSerif", Font.PLAIN, 14);
     public static final Font TEXTO_NORMAL = new Font("SansSerif", Font.PLAIN, 14);

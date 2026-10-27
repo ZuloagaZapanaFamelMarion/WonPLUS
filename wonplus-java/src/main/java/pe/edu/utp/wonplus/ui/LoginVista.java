@@ -26,7 +26,7 @@ public final class LoginVista extends Vista {
         JPanel centro = new JPanel(new GridBagLayout());
         centro.setOpaque(false);
         JPanel formulario = new JPanel(new GridBagLayout());
-        formulario.setBackground(Color.WHITE);
+        formulario.setBackground(Estilo.TARJETA_CLARA);
         formulario.setBorder(javax.swing.BorderFactory.createEmptyBorder(28, 28, 28, 28));
         formulario.setPreferredSize(new Dimension(420, 360));
 
