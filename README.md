@@ -81,6 +81,7 @@ Las pruebas cubren el cálculo de la venta, los periodos de consulta, el cifrado
 | `b1e3c2b` | Informe del avance, sin la clave de la base | [b1e3c2b](https://github.com/ZuloagaZapanaFamelMarion/WonPLUS/commit/b1e3c2babc4ac9b35542fb60b8b3492dcb54e5ed) |
 | `bc62e5e` | PDF del avance 3 | [bc62e5e](https://github.com/ZuloagaZapanaFamelMarion/WonPLUS/commit/bc62e5e93fab817ae065b1be2123ccbfe415018a) |
 | `4a9a0d9` | Presentación del avance 3 | [4a9a0d9](https://github.com/ZuloagaZapanaFamelMarion/WonPLUS/commit/4a9a0d9fdfbfdc439d498e602dd071905014e2c1) |
+| `399b65b` | Interfaz en el morado de los bocetos | [399b65b](https://github.com/ZuloagaZapanaFamelMarion/WonPLUS/commit/399b65b0ea609863cf3a950ac6eea61f5fec2358) |
 
 ## Rúbrica
 
